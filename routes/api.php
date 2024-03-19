@@ -2,10 +2,10 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
-use App\Http\Controllers\AuthController; 
+use App\Http\Controllers\AuthController;
 
-use App\Http\Controllers\RegUserController; 
-use App\Http\Controllers\RegDonorController; 
+use App\Http\Controllers\RegUserController;
+use App\Http\Controllers\RegDonorController;
 
 use App\Http\Controllers\RequestBloodController;
 use App\Http\Controllers\EmergencyRequestBloodController;
@@ -16,7 +16,7 @@ use App\Http\Controllers\LoadProfileController;
 use App\Http\Controllers\LoadRequestController;
 use App\Http\Controllers\NotificationController;
 
-use App\Http\Controllers\AmbulanceInfoController; // load ambulance data or entry 
+use App\Http\Controllers\AmbulanceInfoController; // load ambulance data or entry
 use App\Http\Controllers\BloodBankInfoController; // load bloodBank data or entry
 
 use App\Http\Controllers\LoadEventsController;
@@ -47,7 +47,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-// for login and logout session 
+// for login and logout session
 
 Route::post('/login',[AuthController::class,'login']); // method from AuthController
 Route::middleware('auth:api')->post('/logout',[AuthController::class,'logout']);
@@ -60,21 +60,21 @@ Route::post('/searchBlood',[SearchBloodController::class,'searchBlood']); // met
 Route::post('/loadProfile',[LoadProfileController::class,'loadProfile']); // method from LoadProfilecontroller
 //Route::post('/showProfile',[LoadProfileController::class,'loadProfile']); // method from LoadProfilecontroller
 
-// signUp user 
+// signUp user
 Route::post('/regUser',[RegUserController::class,'regUser']); // for user registration
 Route::post('/regDonor',[RegDonorController::class,'regDonor']); // for donor registration
 
 
 //fetchUserData for settings screen
-Route::post('/fetchingUserData',[RegUserController::class,'fetchingUserData']); 
+Route::post('/fetchingUserData',[RegUserController::class,'fetchingUserData']);
 
 //updatingUserData for settings screen
-Route::post('/updateUserData',[RegUserController::class,'updateUserData']); 
+Route::post('/updateUserData',[RegUserController::class,'updateUserData']);
 
 // Donor profile update
 Route::post('/updateDonorProfile',[RegDonorController::class,'updateDonorProfile']); // for donor registration
 
-// count total no. of donors 
+// count total no. of donors
 Route::get('/donorCountsByBloodGroup',[RegDonorController::class,'donorCountsByBloodGroup']); // for counting
 Route::post('/getTopDonors',[RegDonorController::class,'getTopDonors']); // for counting
 
@@ -92,7 +92,7 @@ Route::post('/notificationReadReId',[NotificationController::class,'notification
 Route::post('/notificationReadEvent',[NotificationController::class,'notificationReadEvent']);
 
 
-Route::post('/setAppointment',[SetAppointmentController::class,'setAppointment']); // setting Appointment 
+Route::post('/setAppointment',[SetAppointmentController::class,'setAppointment']); // setting Appointment
 Route::post('/loadEvents',[LoadEventsController::class,'loadEvents']); // loading Events
 
 Route::post('/loadAmbulanceInfo',[AmbulanceInfoController::class,'loadAmbulanceInfo']); // loading Ambulance data
@@ -106,15 +106,15 @@ Route::post('/test',[TestController::class,'test']);
 
 // For Adding New donation records
 Route::post('/donationHistory',[DonationHistoryController::class,'donationHistory']); // for insertion
-Route::post('/retrieveDonationHistory',[DonationHistoryController::class,'retrieveDonationHistory']); // for retrieving 
+Route::post('/retrieveDonationHistory',[DonationHistoryController::class,'retrieveDonationHistory']); // for retrieving
 
 
-// For emergency_request_available_donors to make an entry 
+// For emergency_request_available_donors to make an entry
 Route::post('/erAvailableDonors',[EmergencyRequestAvailableDonorsController::class,'erAvailableDonors']);
-// For request_available_donors to make an entry 
+// For request_available_donors to make an entry
 Route::post('/rAvailableDonors',[RequestAvailableDonorsController::class,'rAvailableDonors']);
 
-//listing donors list who said im available for request 
+//listing donors list who said im available for request
 Route::post('/rAvailableDonorList',[RequestAvailableDonorsController::class,'rAvailableDonorList']);
 Route::post('/erAvailableDonorList',[EmergencyRequestAvailableDonorsController::class,'erAvailableDonorList']);
 
@@ -125,8 +125,8 @@ Route::post('/adminAddedDonors',[RegDonorController::class,'adminAddedDonors']);
 
 // Event Status
 Route::post('/likeEvent',[EventStatusController::class,'likeEvent']);
-Route::post('/attendEvent',[EventStatusController::class,'attendEvent']); 
-Route::post('/loadEvents',[EventStatusController::class,'loadEvents']); 
+Route::post('/attendEvent',[EventStatusController::class,'attendEvent']);
+//Route::post('/loadEvents',[EventStatusController::class,'loadEvents']);
 
 
 //delete my request
